@@ -76,7 +76,7 @@ class SlaveServer:
         port = int(slave_port)
         print(host, port)
         s_server = socketserver.ThreadingTCPServer((host, port), MyServer)
-        print('slave_server start !')
+        print('slave_server')
         with s_server:
             s_server.serve_forever()
 
@@ -84,4 +84,3 @@ class SlaveServer:
 if __name__ == "__main__":
     slave = SlaveServer()
     slave.start()
-
