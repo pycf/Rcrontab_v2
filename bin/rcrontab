@@ -1,0 +1,21 @@
+#!/bin/sh
+option=$1
+basedir="/script/crontab_test"
+main="${basedir}/Rcrontab/main.py"
+if [ -z $option  ];then
+	option='None'
+fi
+if [ $option == 'start' ];then
+	nohup python3  -u $main  start & > /dev/null
+elif [ $option == 'stop' ];then
+	 python3  $main   stop
+elif [ $option == 'restart' ];then
+	python3  $main   stop
+	nohup python3  -u $main  start & > /dev/null
+elif [ $option == 'alive_slaves' ];then
+    python3  $main  get_alive_slaves
+elif [ $option == 'send_plan' ];then
+    python3  $main  redistribute_plan
+else
+	echo "Useage Rcrontab [start|stop|restart|alive_slaves|send_plan]"
+fi
