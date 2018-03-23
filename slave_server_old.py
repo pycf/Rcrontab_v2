@@ -84,3 +84,4 @@ class SlaveServer:
 if __name__ == "__main__":
     slave = SlaveServer()
     slave.start()
+    print("hahahaha")
